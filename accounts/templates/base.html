@@ -8,7 +8,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
-    <main>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+        
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img style="width:50px" src="https://freepikpsd.com/wp-content/uploads/2019/10/newspaper-logo-png-5-Transparent-Images.png" alt="logo.png">
+                Newspaper
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if user.is_authenticated %}
+                <img class="mx-auto" style="width: 15%" src="http://www.newspaperadsbooking.com/images/logo.png" alt="title.png">
+            {% endif %}
+                <ul class="navbar-nav ms-auto  mb-lg-0"> 
+                    {% if user.is_authenticated %} 
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-primary border-white dropdown-toggle"  type="button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
+                                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                                {% comment %} <li><hr class="dropdown-divider"></li> {% endcomment %}
+                                {% comment %} <li><a class="dropdown-item" href="#">Something else here</a></li> {% endcomment %}
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link btn btn-primary border-white" href="{% url 'login' %}">Log In</a> 
+                        </li>
+                        <li class="nav-item"><a class="nav-link">|</a></li>
+                        <li>
+                            <a class="nav-link btn btn-primary border-white" href="{% url 'signup' %}">Sign up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="position-absolute top-50 start-50 translate-middle">
         {% block content %}
         {% endblock content %}
     </main>

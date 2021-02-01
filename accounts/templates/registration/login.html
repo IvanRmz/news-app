@@ -3,9 +3,14 @@
 {% block title %}Log In{% endblock title %}
 
 {% block content %}
-    <form method="post">
+    <div class="text-center">
+        <img  style="width: 30%; margin:1.5rem" src="http://www.newspaperadsbooking.com/images/logo.png" alt="title.png">
+    </div>
+    <form class="text-center border border-dark shadow-lg p-3 mb-5 bg-white rounded" style="padding: 2rem" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Log In</button>
+        <div class="text-center">
+            <button class="btn btn-outline-primary" type="submit">Log In</button>
+        </div>
     </form>
 {% endblock content %}
