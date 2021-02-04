@@ -4,8 +4,19 @@
 {% block content %}
     <div class="text-center">
         {% if user.is_authenticated %}
-            Hi {{ user.username }}! You are {{ user.age }} years old.
-            <p><a href="{% url 'logout' %}">Log Out</a></p>
+             <h1>Hi {{ user.username }}!</h1> {% comment %}You are {{ user.age }} years old.
+            <p><a href="{% url 'logout' %}">Log Out</a></p> {% endcomment %}
+            <div class="jumbotron">
+                <h1 class="diplay-4">Newspaper app</h1>
+                <p class="lead">A Newspaper website built with Django.</p>
+                <p class="lead">
+                <a class="ben btn-primary btn-lg"
+                    href="{% url 'article_list' %}"
+                    role="button">
+                    View All Articles
+                </a>
+                </p>
+            </div>
         {% else %}
             <img style="width: 70%; margin: 2rem" src="http://www.newspaperadsbooking.com/images/logo.png" alt="title.png">
             <p>You are not logged in</p>

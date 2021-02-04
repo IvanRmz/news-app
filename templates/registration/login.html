@@ -5,12 +5,14 @@
 {% block content %}
     <div class="text-center">
         <img  style="width: 30%; margin:1.5rem" src="http://www.newspaperadsbooking.com/images/logo.png" alt="title.png">
+    
+        <form class="border border-dark shadow-lg p-3 mb-5 bg-white rounded" style="padding: 2rem" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center">
+                <button class="btn btn-outline-primary" type="submit">Log In</button>
+            </div>
+            <a href="{%url 'password_reset'%}">Forgot password?</a>
+        </form>
     </div>
-    <form class="text-center border border-dark shadow-lg p-3 mb-5 bg-white rounded" style="padding: 2rem" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="text-center">
-            <button class="btn btn-outline-primary" type="submit">Log In</button>
-        </div>
-    </form>
 {% endblock content %}
